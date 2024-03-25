@@ -42,21 +42,66 @@ export const homeIcons = [
 
 export const homeCard = [
     {
+        id: "1",
         name: "Yoona",
         imageUrl: "/assets/images/yoona.jpg",
         iconUrl: "/assets/icons/microphone.png",
         description: "Audio"
     },
     {
+        id: "2",
         name: "Yoona",
         imageUrl: "/assets/images/yoona2.jpg",
         iconUrl: "/assets/icons/camera.png",
         description: "Photo"
     },
     {
+        id: "3",
         name: "Twice",
         imageUrl: "/assets/images/jihyo.jpg",
         iconUrl: "/assets/icons/film.png",
         description: "Video"
+    },
+    {
+        id: "4",
+        name: "Bae Suzy",
+        imageUrl: "/assets/images/bae.jpg",
+        iconUrl: "/assets/icons/camera.png",
+        description: "Photo"
+    },
+    {
+        id: "5",
+        name: "Irene",
+        imageUrl: "/assets/images/irene.jpg",
+        iconUrl: "/assets/icons/film.png",
+        description: "Video"
+    },
+    {
+        id: "6",
+        name: "IU",
+        imageUrl: "/assets/images/iu.jpg",
+        iconUrl: "/assets/icons/microphone.png",
+        description: "Audio"
+    },
+    {
+        id: "7",
+        name: "Irene",
+        imageUrl: "/assets/images/ireene.jpg",
+        iconUrl: "/assets/icons/microphone.png",
+        description: "Audio"
+    },
+    {
+        id: "8",
+        name: "Momo",
+        imageUrl: "/assets/images/momo.jpg",
+        iconUrl: "/assets/icons/camera.png",
+        description: "Photo"
+    },
+    {
+        id: "9",
+        name: "Tzuyu",
+        imageUrl: "/assets/images/tzuyu.jpg",
+        iconUrl: "/assets/icons/camera.png",
+        description: "Photo"
     },
 ]

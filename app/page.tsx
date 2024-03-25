@@ -6,8 +6,27 @@ import { Input } from "@/components/ui/input";
 import { homeIcons } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useRef, useState, useTransition } from "react";
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const router = useRouter()
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [isSearching, startTransition] = useTransition()
+
+  const handleSearch = (event: any) => {
+    const query = event.target.value;
+    setSearchTerm(query);
+    startTransition(() => {
+      if (query.trim() === '') {
+        router.push('/');
+      } else {
+        router.push(`/?query=${query}`);
+      }
+    });
+  };
+
   return (
     <div className="flex flex-row min-h-screen">
       <section className='hidden md:flex px-8 w-[300px]'>
@@ -38,7 +57,7 @@ export default function Home() {
             ))}
           </div>
         </div>
- 
+
         <div className="flex">
           <div className="flex items-center justify-between w-full">
             <h1 className="text-[24px] md:text-[30px] font-semibold">
@@ -48,14 +67,18 @@ export default function Home() {
             <div className="flex items-center">
               <div className="bg-gray-200 py-2 px-4 flex items-center gap-2 rounded-full">
                 <Image src="/assets/icons/search.png" alt="" width={24} height={24} />
-                <Input className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200"  placeholder="Search..."/>
+                <Input
+                  onChange={handleSearch}
+                  ref={inputRef}
+                  className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200" placeholder="Search..."
+                />
               </div>
             </div>
           </div>
         </div>
 
         <div className="flex">
-          <HomeCard />
+          <HomeCard searchTerm={searchTerm} />
         </div>
       </section>
     </div>
