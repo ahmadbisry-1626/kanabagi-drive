@@ -57,7 +57,7 @@ export const homeCard = [
     },
     {
         id: "3",
-        name: "Twice",
+        name: "Momo",
         imageUrl: "/assets/images/jihyo.jpg",
         iconUrl: "/assets/icons/film.png",
         description: "Video"

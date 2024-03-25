@@ -36,7 +36,7 @@ export default function Home() {
       <section className="w-full px-7 md:px-8 pt-6 flex flex-col gap-10">
         <div className="relative overflow-hidden wrapper py-4 flex flex-col items-center justify-center xl:h-[300px] md:h-[400px] text-center rounded-[24px] bg-gradient-to-r from-blue-700 to-blue-950 gap-6">
           <Image src="/assets/icons/star.png" alt="" width={100} height={100}
-            className="absolute top-2 left-2 xl:top-10 xl:left-10 w-[60px] h-[60px]  md:w-[100px] md:h-[100px]" />
+            className="absolute top-2 left-2 xl:top-10 xl:left-10 w-[60px] h-[60px] md:w-[100px] md:h-[100px] hidden sm:flex" />
           <Image src="/assets/images/line.png" alt="" width={100} height={100} className="absolute right-10 bottom-0 hidden lg:flex" />
           <h1 className="font-bold text-[24px] md:text-[36px] text-white max-w-xs md:max-w-lg">
             Unleash Your Creative Vision with Kanabagi

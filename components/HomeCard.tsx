@@ -19,8 +19,6 @@ type HomeCardProps = {
 
 const HomeCard = ({ searchTerm }: HomeCardProps) => {
     const [originalContent, setOriginalContent] = useState(homeCard);
-
-    // Fungsi untuk memfilter konten berdasarkan pencarian
     const filteredContent = originalContent.filter(card => {
         return card.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
