@@ -11,14 +11,13 @@ import { SearchParamProps } from '../types/index';
 import { Suspense } from "react";
 
 export default function Home({ searchParams }: SearchParamProps) {
-  const searchParam = new URLSearchParams(document.location.search); 
   const pathname = usePathname()
   const { replace } = useRouter()
 
   const query = searchParams?.query || '';
 
   function handleSearch(query: string) {
-    const param = new URLSearchParams(searchParam)
+    const param = new URLSearchParams(window.location.search)
     if (query) {
       param.set('query', query)
     } else {
@@ -76,7 +75,7 @@ export default function Home({ searchParams }: SearchParamProps) {
                     // onChange={handleSearch}
                     // ref={inputRef}
                     // onChange={(e) => setQuery(e.target.value)}
-                    defaultValue={searchParam.get('query')?.toString()}
+                    defaultValue={query}
                     onChange={(e) => { handleSearch(e.target.value) }}
                     className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200" placeholder="Search..."
                   />
