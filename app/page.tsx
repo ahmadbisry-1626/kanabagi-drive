@@ -77,7 +77,7 @@ export default function Home({ searchParams }: SearchParamProps) {
                     // onChange={(e) => setQuery(e.target.value)}
                     defaultValue={query}
                     onChange={(e) => { handleSearch(e.target.value) }}
-                    className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200" placeholder="Search..."
+                    className="border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-red-500 " placeholder="Search..."
                   />
                 </div>
               </div>
