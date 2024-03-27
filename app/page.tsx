@@ -6,12 +6,12 @@ import { Input } from "@/components/ui/input";
 import { homeIcons } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SearchParamProps } from '../types/index';
 import { Suspense } from "react";
 
 export default function Home({ searchParams }: SearchParamProps) {
-  const searchParam = useSearchParams()
+  const searchParam = new URLSearchParams(document.location.search); 
   const pathname = usePathname()
   const { replace } = useRouter()
 
