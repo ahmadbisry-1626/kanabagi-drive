@@ -13,6 +13,6 @@ export type UrlQueryParams = {
   export type SearchParamProps = {
     params: { id: string }
     searchParams: { [key: string]: string | string[] | undefined }
-    query: string
-    page: string
+    query?: string
+    page?: string
   }
