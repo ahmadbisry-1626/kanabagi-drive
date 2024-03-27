@@ -15,18 +15,25 @@ import { useRouter } from 'next/navigation'
 import PaginationControls from './PaginationControl'
 
 type HomeCardProps = {
-    data: typeof homeCard,
-    query: string
-    searchParams: { [key: string]: string | string[] | undefined }
+    searchParams: { [key: string]: string | string[] | undefined },
+    query: any,
+    page?: string,
+    itemPerPage?: number
 }
 
-const HomeCard = ({ data, query, searchParams }: HomeCardProps) => {
-    const filteredContent = data.filter(card => {
+const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
+    const filteredContent = homeCard.filter(card => {
         return card.name.toLowerCase().includes(query.toLowerCase());
     });
 
+    if(query) {
+        itemPerPage = 999
+    } else {
+        itemPerPage = 6
+    }
+
     const page = searchParams['page'] ?? '1'
-    const per_page = searchParams['per_page'] ?? '6'
+    const per_page = searchParams['per_page'] ?? itemPerPage
 
     // mocked, skipped and limited in the real app
     const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
@@ -104,10 +111,14 @@ const HomeCard = ({ data, query, searchParams }: HomeCardProps) => {
                 </div>
             )}
 
-            <PaginationControls
-                hasNextPage={end < data.length}
-                hasPrevPage={start > 0}
-            />
+            {query ? (
+                <p></p>
+            ): (
+                <PaginationControls
+                    hasNextPage={end < homeCard.length}
+                    hasPrevPage={start > 0}
+                />
+            )}
 
         </section>
     )

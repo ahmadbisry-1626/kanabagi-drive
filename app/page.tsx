@@ -7,57 +7,30 @@ import { homeCard, homeIcons } from "@/constants";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState} from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { SearchParamProps } from '../types/index';
 
 export default function Home({ searchParams }: SearchParamProps) {
-  // const [searchTerm, setSearchTerm] = useState<string>('');
-  // const inputRef = useRef<HTMLInputElement>(null)
-  // const [isSearching, startTransition] = useTransition()
+  const searchParam = useSearchParams()
+  const pathname = usePathname()
+  const { replace } = useRouter()
 
-  // const handleSearch = (event: any) => {
-  //   const query = event.target.value;
-  //   setSearchTerm(query);
-  //   startTransition(() => {
-  //     if (query.trim() === '') {
-  //       router.push('/');
-  //     } else {
-  //       router.push(`/?query=${query}`);
-  //     }
-  //   });
-  // };
+  const query = searchParams?.query || '';
 
-  const homeData = {
-    data: homeCard,
+  function handleSearch(query: string) {
+    const param = new URLSearchParams(searchParam)
+    if (query) {
+      param.set('query', query)
+    } else {
+      param.delete('query')
+    }
+
+    // Set page parameter to 1
+    param.set('page', '1')
+
+    replace(`${pathname}?${param.toString()}`)
   }
-
-  const [query, setQuery] = useState('')
-  // const searchParam = useSearchParams()
-  // const router = useRouter()
-
-  // useEffect(() => {
-  //   const delayDebounceFn = setTimeout(() => {
-  //     let newUrl = ''
-
-  //     if (query) {
-  //       newUrl = formUrlQuery({
-  //         params: searchParam.toString(),
-  //         key: 'query',
-  //         value: query,
-  //       })
-  //     } else {
-  //       newUrl = removeKeysFromQuery({
-  //         params: searchParam.toString(),
-  //         keysToRemove: ['query'],
-  //       })
-  //     }
-
-  //     router.push(newUrl, { scroll: false })
-  //   }, 300)
-
-  //   return () => clearTimeout(delayDebounceFn)
-  // }, [query, searchParams, router])
 
   return (
     <div className="flex flex-row min-h-screen">
@@ -102,7 +75,9 @@ export default function Home({ searchParams }: SearchParamProps) {
                 <Input
                   // onChange={handleSearch}
                   // ref={inputRef}
-                  onChange={(e) => setQuery(e.target.value)}
+                  // onChange={(e) => setQuery(e.target.value)}
+                  defaultValue={searchParam.get('query')?.toString()}
+                  onChange={(e) => { handleSearch(e.target.value) }}
                   className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200" placeholder="Search..."
                 />
               </div>
@@ -112,9 +87,8 @@ export default function Home({ searchParams }: SearchParamProps) {
 
         <div className="flex">
           <HomeCard
-            data={homeData.data}
-            query={query} 
-            searchParams={searchParams}/>
+            searchParams={searchParams}
+            query={query} />
         </div>
       </section>
     </div>

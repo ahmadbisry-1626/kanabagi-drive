@@ -153,4 +153,20 @@ export const homeCard = [
         description: "Chou Tzu-yu or better known as Tzuyu, is a singer and dancer from Taiwan. She is a member of the South Korean girl group Twice, which was formed by JYP Entertainment through the reality show Sixteen in 2015.",
         file: "Video",
     },
+    {
+        id: "15",
+        name: "Irene",
+        imageUrl: "/assets/images/irene5.jpg",
+        iconUrl: "/assets/icons/microphone.png",
+        description: "Bae Joo Hyun, or better known by her stage name Irene, is a singer, television host, actress and leader of the South Korean female vocal group, Red Velvet. Irene is also a member of the Red Velvet sub-unit - Irene & Seulgi.",
+        file: "Audio",
+    },
+    {
+        id: "16",
+        name: "Irene",
+        imageUrl: "/assets/images/irene6.jpg",
+        iconUrl: "/assets/icons/microphone.png",
+        description: "Bae Joo Hyun, or better known by her stage name Irene, is a singer, television host, actress and leader of the South Korean female vocal group, Red Velvet. Irene is also a member of the Red Velvet sub-unit - Irene & Seulgi.",
+        file: "Audio",
+    },
 ]
