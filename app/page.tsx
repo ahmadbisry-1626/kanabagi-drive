@@ -11,11 +11,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SearchParamProps } from '../types/index';
 
-export default function Home({ searchParams }: SearchParamProps) {
+const Home = ({ searchParams }: SearchParamProps) => {
   const searchParam = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
-
+ 
   const query = searchParams?.query || '';
 
   function handleSearch(query: string) {
@@ -94,3 +94,5 @@ export default function Home({ searchParams }: SearchParamProps) {
     </div>
   );
 }
+
+export default Home
