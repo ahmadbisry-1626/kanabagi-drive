@@ -38,7 +38,7 @@ const PaginationControls: FC<PaginationControlsProps> = (
           ) : (
             <PaginationPrevious onClick={() => {
               router.push(`/?page=${Number(page) - 1}`)
-            }} className='cursor-pointer' />
+            }} className='cursor-pointer select-none' />
           )}
         </PaginationItem>
 
@@ -46,7 +46,7 @@ const PaginationControls: FC<PaginationControlsProps> = (
           <PaginationItem key={index}>
             <PaginationLink onClick={() => {
               router.push(`/?page=${index + 1}`)
-            }} isActive={`${index + 1}` === page}>
+            }} isActive={`${index + 1}` === page} className='select-none'>
               {index + 1}
             </PaginationLink>
           </PaginationItem>
@@ -59,7 +59,7 @@ const PaginationControls: FC<PaginationControlsProps> = (
           ) : (
             <PaginationNext onClick={() => {
               router.push(`/?page=${Number(page) + 1}`)
-            }} className='cursor-pointer' />
+            }} className='cursor-pointer select-none' />
           )}
         </PaginationItem>
       </PaginationContent>

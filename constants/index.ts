@@ -165,8 +165,8 @@ export const homeCard = [
         id: "16",
         name: "Irene",
         imageUrl: "/assets/images/irene6.jpg",
-        iconUrl: "/assets/icons/microphone.png",
+        iconUrl: "/assets/icons/camera.png",
         description: "Bae Joo Hyun, or better known by her stage name Irene, is a singer, television host, actress and leader of the South Korean female vocal group, Red Velvet. Irene is also a member of the Red Velvet sub-unit - Irene & Seulgi.",
-        file: "Audio",
+        file: "Photo",
     },
 ]

@@ -45,7 +45,7 @@ export default function Home({ searchParams }: SearchParamProps) {
               Unleash Your Creative Vision with Kanabagi
             </h1>
 
-            <div className="flex gap-6 md:gap-10 pb-2 md:pb-0">
+            <div className="flex gap-6 md:gap-10 xl:gap-[50px] pb-2 md:pb-0">
               {homeIcons.map((sosmed) => (
                 <div className="flex flex-col items-center gap-4" key={sosmed.name}>
                   <div className="bg-blue-600 p-2 md:p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-200 ease-in-out">
@@ -64,7 +64,7 @@ export default function Home({ searchParams }: SearchParamProps) {
           <div className="flex">
             <div className="flex items-center justify-between w-full">
               <h1 className="text-[24px] md:text-[30px] font-semibold">
-                Recent Works
+                Recent Files
               </h1>
 
               <div className="flex items-center">
@@ -76,7 +76,7 @@ export default function Home({ searchParams }: SearchParamProps) {
                     // onChange={(e) => setQuery(e.target.value)}
                     defaultValue={query}
                     onChange={(e) => { handleSearch(e.target.value) }}
-                    className="border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200 " placeholder="Search..."
+                    className="border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200 " placeholder="Bae Suzy"
                   />
                 </div>
               </div>
