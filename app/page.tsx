@@ -3,29 +3,63 @@
 import HomeCard from "@/components/HomeCard";
 import SideNavbar from "@/components/SideNavbar";
 import { Input } from "@/components/ui/input";
-import { homeIcons } from "@/constants";
+import { homeCard, homeIcons } from "@/constants";
+import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useRef, useState, useTransition } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState, useTransition } from "react";
+import { SearchParamProps } from '../types/index';
 
-export default function Home() {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+export default function Home({ searchParams }: SearchParamProps) {
+  // const [searchTerm, setSearchTerm] = useState<string>('');
+  // const inputRef = useRef<HTMLInputElement>(null)
+  // const [isSearching, startTransition] = useTransition()
+
+  // const handleSearch = (event: any) => {
+  //   const query = event.target.value;
+  //   setSearchTerm(query);
+  //   startTransition(() => {
+  //     if (query.trim() === '') {
+  //       router.push('/');
+  //     } else {
+  //       router.push(`/?query=${query}`);
+  //     }
+  //   });
+  // };
+
+  const homeData = {
+    data: homeCard,
+  }
+
+  const [query, setQuery] = useState('')
+  const searchParam = useSearchParams()
   const router = useRouter()
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [isSearching, startTransition] = useTransition()
 
-  const handleSearch = (event: any) => {
-    const query = event.target.value;
-    setSearchTerm(query);
-    startTransition(() => {
-      if (query.trim() === '') {
-        router.push('/');
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      let newUrl = ''
+
+      if (query) {
+        newUrl = formUrlQuery({
+          params: searchParam.toString(),
+          key: 'query',
+          value: query,
+        })
       } else {
-        router.push(`/?query=${query}`);
+        newUrl = removeKeysFromQuery({
+          params: searchParam.toString(),
+          keysToRemove: ['query'],
+        })
       }
-    });
-  };
+
+      router.push(newUrl, { scroll: false })
+    }, 300)
+
+    return () => clearTimeout(delayDebounceFn)
+  }, [query, searchParams, router])
+
+
 
   return (
     <div className="flex flex-row min-h-screen">
@@ -42,7 +76,7 @@ export default function Home() {
             Unleash Your Creative Vision with Kanabagi
           </h1>
 
-          <div className="flex gap-6 md:gap-10">
+          <div className="flex gap-8 md:gap-10 pb-2 md:pb-0">
             {homeIcons.map((sosmed) => (
               <div className="flex flex-col items-center gap-4" key={sosmed.name}>
                 <div className="bg-blue-600 p-2 md:p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-200 ease-in-out">
@@ -52,7 +86,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-                <p className="text-white font-normal md:font-medium">{sosmed.name}</p>
+                <p className="text-white font-normal md:font-medium hidden md:flex">{sosmed.name}</p>
               </div>
             ))}
           </div>
@@ -68,8 +102,9 @@ export default function Home() {
               <div className="bg-gray-200 py-2 px-4 flex items-center gap-2 rounded-full">
                 <Image src="/assets/icons/search.png" alt="" width={24} height={24} />
                 <Input
-                  onChange={handleSearch}
-                  ref={inputRef}
+                  // onChange={handleSearch}
+                  // ref={inputRef}
+                  onChange={(e) => setQuery(e.target.value)}
                   className="w-[200px] border-none focus-visible:ring-transparent rounded-full focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-500 bg-gray-200" placeholder="Search..."
                 />
               </div>
@@ -78,7 +113,10 @@ export default function Home() {
         </div>
 
         <div className="flex">
-          <HomeCard searchTerm={searchTerm} />
+          <HomeCard
+            data={homeData.data}
+            query={query} 
+            searchParams={searchParams}/>
         </div>
       </section>
     </div>

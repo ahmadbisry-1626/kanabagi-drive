@@ -1,60 +1,46 @@
 import { homeCard } from '@/constants'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import { Separator } from './ui/separator'
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination"
 import { Button } from './ui/button'
-import DetailsButton from './DetailsButton'
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { useRouter } from 'next/navigation'
+import PaginationControls from './PaginationControl'
 
 type HomeCardProps = {
-    searchTerm: string,
+    data: typeof homeCard,
+    query: string
+    searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const pageSize = 6;
-
-
-const HomeCard = ({ searchTerm }: HomeCardProps) => {
-    const [originalContent, setOriginalContent] = useState(homeCard);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [openDialog, setOpenDialog] = useState(false)
-
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-
-    const filteredContent = originalContent.filter(card => {
-        return card.name.toLowerCase().includes(searchTerm.toLowerCase());
+const HomeCard = ({ data, query, searchParams }: HomeCardProps) => {
+    const filteredContent = data.filter(card => {
+        return card.name.toLowerCase().includes(query.toLowerCase());
     });
 
-    const currentData = filteredContent.slice(startIndex, endIndex);
+    const page = searchParams['page'] ?? '1'
+    const per_page = searchParams['per_page'] ?? '6'
 
-    const handlePageChange = (page: any) => {
-        setCurrentPage(page);
-    };
+    // mocked, skipped and limited in the real app
+    const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
+    const end = start + Number(per_page) // 5, 10, 15 ...
+
+    const entries = filteredContent.slice(start, end)
 
     return (
 
         <section className='flex flex-col items-center w-full'>
-            {currentData.length > 0 ? (
+            {entries.length > 0 ? (
                 <div className='grid md:grid-cols-2 xl:grid-cols-3 grid-cols-1 w-full place-items-center gap-10 md:gap-[50px] pb-10'>
-                    {currentData.map((card) => (
-                        <div className='group flex flex-col bg-gray-50 rounded-b-[12px] shadow-lg' key={card.id} onClick={() => setOpenDialog(true)}>
+                    {entries.map((card) => (
+                        <div className='group flex flex-col bg-gray-50 rounded-b-[12px] shadow-lg' key={card.id}>
                             <div className='relative group'>
                                 <Image src={card.imageUrl} alt='' width={400} height={400} className='rounded-t-[12px]' />
                                 <span className='group absolute top-0 h-full w-full bg-black/50 text-white font-medium text-center flex items-center justify-center opacity-0 hover:!opacity-100 rounded-t-[12px] transition duration-200 ease-in-out flex-col'>
@@ -109,34 +95,19 @@ const HomeCard = ({ searchTerm }: HomeCardProps) => {
                                     </DialogFooter>
                                 </DialogContent>
                             </Dialog>
-                            {/* <DetailsButton style='hidden group-hover:flex' currentData={currentData}/> */}
                         </div>
                     ))}
                 </div>
             ) : (
                 <div className='flex items-center justify-center w-full bg-gray-100 rounded-[12px] py-[36px]'>
-                    <h2 className='text-[18px] md:text-[24px] font-medium'>"{searchTerm}" Not Found</h2>
+                    <h2 className='text-[18px] md:text-[24px] font-medium'>"{query}" Not Found</h2>
                 </div>
             )}
 
-            <Pagination className='pb-4 pt-4'>
-                <PaginationContent>
-                    <PaginationItem>
-                        <PaginationPrevious href="#" onClick={() => handlePageChange(currentPage - 1)} />
-                    </PaginationItem>
-                    {/* Loop through pages */}
-                    {Array.from({ length: Math.ceil(homeCard.length / pageSize) }, (_, index) => (
-                        <PaginationItem key={index}>
-                            <PaginationLink href="#" onClick={() => handlePageChange(index + 1)} isActive={index + 1 === currentPage}>
-                                {index + 1}
-                            </PaginationLink>
-                        </PaginationItem>
-                    ))}
-                    <PaginationItem>
-                        <PaginationNext href="#" onClick={() => handlePageChange(currentPage + 1)} />
-                    </PaginationItem>
-                </PaginationContent>
-            </Pagination>
+            <PaginationControls
+                hasNextPage={end < data.length}
+                hasPrevPage={start > 0}
+            />
 
         </section>
     )
