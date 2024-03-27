@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body className={poppins.variable}>
         <Navbar />
         <main className="flex-1">
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
         </main>
         <Footer />
       </body>
