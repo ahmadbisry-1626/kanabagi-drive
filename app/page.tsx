@@ -8,7 +8,7 @@ import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { SearchParamProps } from '../types/index';
 
 export default function Home({ searchParams }: SearchParamProps) {
@@ -85,11 +85,11 @@ export default function Home({ searchParams }: SearchParamProps) {
           </div>
         </div>
 
-        <div className="flex">
+        <Suspense>
           <HomeCard
             searchParams={searchParams}
             query={query} />
-        </div>
+        </Suspense>
       </section>
     </div>
   );
