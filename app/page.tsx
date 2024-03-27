@@ -59,8 +59,6 @@ export default function Home({ searchParams }: SearchParamProps) {
     return () => clearTimeout(delayDebounceFn)
   }, [query, searchParams, router])
 
-
-
   return (
     <div className="flex flex-row min-h-screen">
       <section className='hidden md:flex px-8 w-[300px]'>
