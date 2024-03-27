@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { SearchParamProps } from '../types/index';
-import { Suspense } from "react";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home({ searchParams }: SearchParamProps) {
   const pathname = usePathname()
@@ -31,14 +31,13 @@ export default function Home({ searchParams }: SearchParamProps) {
   }
 
   return (
-    <Suspense>
       <div className="flex flex-row min-h-screen">
         <section className='hidden md:flex px-8 w-[300px]'>
           <SideNavbar navStyling="py-6" />
         </section>
 
         <section className="w-full px-7 md:px-8 pt-6 flex flex-col gap-10">
-          <div className="relative overflow-hidden wrapper py-4 flex flex-col items-center justify-center xl:h-[300px] md:h-[400px] text-center rounded-[24px] bg-gradient-to-r from-blue-700 to-blue-950 gap-6">
+          <div className="relative overflow-hidden wrapper py-4 flex flex-col items-center justify-center xl:h-[350px] md:h-[400px] text-center rounded-[24px] bg-gradient-to-r from-blue-700 to-blue-950 md:gap-[70px] gap-10">
             <Image src="/assets/icons/star.png" alt="" width={100} height={100}
               className="absolute top-2 left-2 xl:top-10 xl:left-10 w-[60px] h-[60px] md:w-[100px] md:h-[100px] hidden sm:flex" />
             <Image src="/assets/images/line.png" alt="" width={100} height={100} className="absolute right-10 bottom-0 hidden lg:flex" />
@@ -46,7 +45,7 @@ export default function Home({ searchParams }: SearchParamProps) {
               Unleash Your Creative Vision with Kanabagi
             </h1>
 
-            <div className="flex gap-8 md:gap-10 pb-2 md:pb-0">
+            <div className="flex gap-6 md:gap-10 pb-2 md:pb-0">
               {homeIcons.map((sosmed) => (
                 <div className="flex flex-col items-center gap-4" key={sosmed.name}>
                   <div className="bg-blue-600 p-2 md:p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-200 ease-in-out">
@@ -56,7 +55,7 @@ export default function Home({ searchParams }: SearchParamProps) {
                     </Link>
                   </div>
 
-                  <p className="text-white font-normal md:font-medium hidden md:flex">{sosmed.name}</p>
+                  <p className="text-white font-normal md:font-medium text-[12px] md:text-[20px]">{sosmed.name}</p>
                 </div>
               ))}
             </div>
@@ -91,6 +90,5 @@ export default function Home({ searchParams }: SearchParamProps) {
           </div>
         </section>
       </div>
-    </Suspense>
   );
 }
