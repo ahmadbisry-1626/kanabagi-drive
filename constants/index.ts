@@ -46,7 +46,7 @@ export const homeCard = [
         name: "Yoona",
         imageUrl: "/assets/images/yoona.jpg",
         iconUrl: "/assets/icons/microphone.png",
-        description: "Im Yoon-ah (Korean: 임윤아; born May 30, 1990), known mononymously as Yoona, is a South Korean singer and actress. After training for five years, she debuted as a member of girl group Girls' Generation (and later its subgroup Girls' Generation-Oh!GG) in August 2007, which went on to become one of the best-selling artists in South Korea.",
+        description: "Yoona, born May 30, 1990, is a South Korean singer and actress known mononymously as Yoona. She debuted after five years of training as a member of Girls' Generation in August 2007. The group became one of South Korea's best-selling artists. Later, Yoona also joined the subgroup Girls' Generation-Oh!GG.",
         file: "Audio",
     },
     {
@@ -54,7 +54,7 @@ export const homeCard = [
         name: "Yoona",
         imageUrl: "/assets/images/yoona2.jpg",
         iconUrl: "/assets/icons/camera.png",
-        description: "Im Yoon-ah (Korean: 임윤아; born May 30, 1990), known mononymously as Yoona, is a South Korean singer and actress. After training for five years, she debuted as a member of girl group Girls' Generation (and later its subgroup Girls' Generation-Oh!GG) in August 2007, which went on to become one of the best-selling artists in South Korea.",
+        description: "Yoona, born May 30, 1990, is a South Korean singer and actress known mononymously as Yoona. She debuted after five years of training as a member of Girls' Generation in August 2007. The group became one of South Korea's best-selling artists. Later, Yoona also joined the subgroup Girls' Generation-Oh!GG.",
         file: "Photo",
     },
     {

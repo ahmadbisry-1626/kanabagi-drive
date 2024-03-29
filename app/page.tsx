@@ -68,8 +68,8 @@ export default function Home({ searchParams }: SearchParamProps) {
               </h1>
 
               <div className="flex items-center">
-                <div className="bg-gray-200 py-2 px-4 flex items-center gap-2 rounded-full">
-                  <Image src="/assets/icons/search.png" alt="" width={24} height={24} />
+                <div className="bg-gray-200 px-4 py-1 md:py-2 md:px-4 flex items-center gap-2 rounded-full">
+                  <Image src="/assets/icons/search.png" alt="" width={24} height={24} className="md:w-[24px] md:h-[24px] w-[18px] h-[18px]"/>
                   <Input
                     // onChange={handleSearch}
                     // ref={inputRef}

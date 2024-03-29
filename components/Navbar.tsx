@@ -27,7 +27,7 @@ const Navbar = () => {
         <Link
           href="/"
           className='hidden md:flex bg-gray-200 p-1 rounded-full'>
-          <Image src='/assets/images/user.jpg' alt='' width={50} height={50} className='rounded-full' />
+          <Image src='/assets/images/sada.jpg' alt='' width={50} height={50} className='rounded-full' />
         </Link>
 
         <nav className='md:hidden'>

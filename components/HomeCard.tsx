@@ -11,8 +11,14 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { useRouter } from 'next/navigation'
 import PaginationControls from './PaginationControl'
+import { useToast } from './ui/use-toast'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+
 
 type HomeCardProps = {
     searchParams: { [key: string]: string | string[] | undefined },
@@ -21,12 +27,14 @@ type HomeCardProps = {
     itemPerPage?: number
 }
 
-const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
+const HomeCard = ({ searchParams, query, itemPerPage }: HomeCardProps) => {
+    const toast = useToast()
+
     const filteredContent = homeCard.filter(card => {
         return card.name.toLowerCase().includes(query.toLowerCase());
     });
 
-    if(query) {
+    if (query) {
         itemPerPage = 999
     } else {
         itemPerPage = 6
@@ -79,7 +87,6 @@ const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
                                             <Image src={card.imageUrl} alt='' width={350} height={350} className='rounded-[12px] md:w-[350] md:h-[350px] w-[250px] h-[250px] bg-contain object-cover' />
 
                                             <div className='flex flex-col gap-2 md:gap-0'>
-
                                                 <div className='flex md:hidden items-center gap-4 justify-center'>
                                                     <h1 className='text-[24px] font-semibold'>{card.name}</h1> |
                                                     <div className='gap-2 flex items-center'>
@@ -89,7 +96,7 @@ const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
                                                 </div>
 
                                                 <h1 className='md:flex hidden text-[24px] font-semibold pb-2'>{card.name}</h1>
-                                                <p className='text-gray-400 text-center md:text-start'>{card.description}</p>
+                                                <p className='text-gray-400 text-center md:text-start text-[14px] md:text-[16px]'>{card.description}</p>
                                                 <div className='hidden md:flex gap-2 absolute bottom-20 items-center'>
                                                     <Image src={card.iconUrl} alt='' width={20} height={20} />
                                                     <p>{card.file}</p>
@@ -98,7 +105,20 @@ const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
                                         </div>
                                     </DialogHeader>
                                     <DialogFooter>
-                                        <Button type="submit" className='w-full bg-blue-800 hover:bg-blue-900'>Download</Button>
+                                        <div className='w-full bg-blue-800 hover:bg-blue-900 text-white rounded-[12px] flex justify-center'>
+                                            <Popover>
+                                                <PopoverTrigger>
+                                                    <div className='md:w-[650px] px-4 py-2 w-[330px]'>
+                                                        Download
+                                                    </div>
+                                                </PopoverTrigger>
+                                                <PopoverContent>
+                                                    <span className='italic'>
+                                                        No function has been added yet. We still working on it.
+                                                    </span>
+                                                </PopoverContent>
+                                            </Popover>
+                                        </div>
                                     </DialogFooter>
                                 </DialogContent>
                             </Dialog>
@@ -113,7 +133,7 @@ const HomeCard = ({searchParams, query, itemPerPage}: HomeCardProps) => {
 
             {query ? (
                 <p></p>
-            ): (
+            ) : (
                 <PaginationControls
                     hasNextPage={end < homeCard.length}
                     hasPrevPage={start > 0}
