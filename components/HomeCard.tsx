@@ -95,7 +95,7 @@ const HomeCard = ({ searchParams, query, itemPerPage }: HomeCardProps) => {
                                                 </div>
 
                                                 <h1 className='md:flex hidden text-[24px] font-semibold pb-2'>{card.name}</h1>
-                                                <p className='text-gray-400 text-justify max-w-[310px] md:text-start text-[14px] md:text-[16px]'>{card.description}</p>
+                                                <p className='text-gray-400 text-justify max-w-[310px] md:max-w-sm text-[14px] md:text-[16px]'>{card.description}</p>
                                                 <div className='hidden md:flex gap-2 absolute bottom-20 items-center'>
                                                     <Image src={card.iconUrl} alt='' width={20} height={20} />
                                                     <p>{card.file}</p>
