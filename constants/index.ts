@@ -24,11 +24,6 @@ export const homeIcons = [
         path: "",
     },
     {
-        name: "Twitter",
-        iconUrl: '/assets/icons/twitter.png',
-        path: "",
-    },
-    {
         name: "Instagram",
         iconUrl: '/assets/icons/instagram.png',
         path: "",

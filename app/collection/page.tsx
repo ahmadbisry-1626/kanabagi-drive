@@ -5,6 +5,7 @@ import Dropdown from '@/components/Dropdown'
 import SideNavbar from '@/components/SideNavbar'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Upload } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -17,9 +18,12 @@ const CollectionPage = () => {
 
       <section className="w-full">
         <div className="px-7 md:px-8 pt-6 flex justify-between items-center">
-          <h1 className="font-bold text-[36px]">Collections</h1>
-          <Button size="lg" className="bg-blue-800 hover:bg-blue-900 rounded-full">
+          <h1 className="font-bold text-[24px] md:text-[36px]">Collections</h1>
+          <Button size="lg" className="bg-blue-800 hover:bg-blue-900 rounded-full md:flex hidden">
             Add Files
+          </Button>
+          <Button className='bg-blue-800 hover:bg-blue-900 rounded-full flex md:hidden'>
+            <Upload  className='h-5 w-5'/>
           </Button>
         </div>
 
