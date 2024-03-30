@@ -18,8 +18,7 @@ import { Separator } from '@radix-ui/react-separator'
 
 const Navbar = () => {
   return (
-    <>
-      <div className='border-b w-full flex justify-between items-center px-6 py-4'>
+      <div className='border-b w-full flex justify-between items-center px-6 py-4 fixed z-10 bg-gray-50'>
         <Link href="/" className='w-37'>
           <Image src="/assets/images/Logos.png" alt='' width={180} height={68} />
         </Link>
@@ -50,7 +49,6 @@ const Navbar = () => {
           </Sheet>
         </nav>
       </div>
-    </>
   )
 }
 

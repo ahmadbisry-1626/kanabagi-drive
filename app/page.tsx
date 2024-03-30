@@ -41,7 +41,7 @@ export default function Home({ searchParams }: SearchParamProps) {
           <Image src="/assets/icons/star.png" alt="" width={100} height={100}
             className="absolute top-2 left-2 xl:top-10 xl:left-10 w-[60px] h-[60px] md:w-[100px] md:h-[100px] hidden sm:flex" />
           <Image src="/assets/images/line.png" alt="" width={100} height={100} className="absolute right-10 bottom-0 hidden lg:flex" />
-          <h1 className="font-bold text-[24px] md:text-[36px] text-white max-w-xs md:max-w-lg">
+          <h1 className="font-bold text-[24px] md:text-[36px] text-white max-w-xs md:max-w-lg z-10">
             Unleash Your Creative Vision with Kanabagi
           </h1>
 

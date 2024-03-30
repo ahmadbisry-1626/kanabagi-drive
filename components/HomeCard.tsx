@@ -48,7 +48,6 @@ const HomeCard = ({ searchParams, query, itemPerPage }: HomeCardProps) => {
     const end = start + Number(per_page) // 5, 10, 15 ...
 
     const entries = filteredContent.slice(start, end)
-
     return (
 
         <section className='flex flex-col items-center w-full'>
@@ -84,7 +83,7 @@ const HomeCard = ({ searchParams, query, itemPerPage }: HomeCardProps) => {
                                         <DialogTitle>{card.name}'s Details</DialogTitle>
                                         <Separator className='' />
                                         <div className='flex flex-col max-md:items-center gap-4 md:flex-row'>
-                                            <Image src={card.imageUrl} alt='' width={350} height={350} className='rounded-[12px] md:w-[350] md:h-[350px] w-[250px] h-[250px] bg-contain object-cover' />
+                                            <Image src={card.imageUrl} alt='' width={350} height={350} className='rounded-[12px] md:w-[350] md:h-[350px] w-[230px] h-[230px] bg-contain object-cover' />
 
                                             <div className='flex flex-col gap-2 md:gap-0'>
                                                 <div className='flex md:hidden items-center gap-4 justify-center'>
@@ -96,7 +95,7 @@ const HomeCard = ({ searchParams, query, itemPerPage }: HomeCardProps) => {
                                                 </div>
 
                                                 <h1 className='md:flex hidden text-[24px] font-semibold pb-2'>{card.name}</h1>
-                                                <p className='text-gray-400 text-center md:text-start text-[14px] md:text-[16px]'>{card.description}</p>
+                                                <p className='text-gray-400 text-justify max-w-[310px] md:text-start text-[14px] md:text-[16px]'>{card.description}</p>
                                                 <div className='hidden md:flex gap-2 absolute bottom-20 items-center'>
                                                     <Image src={card.iconUrl} alt='' width={20} height={20} />
                                                     <p>{card.file}</p>
