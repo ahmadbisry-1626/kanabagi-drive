@@ -14,7 +14,7 @@ const ProfilePage = () => {
       <section className="w-full">
         <div className="px-7 md:px-4 py-4 flex items-center justify-center flex-col gap-4">
           <h1 className="font-bold text-[36px]">Still working on it.</h1>
-          <Image src="/assets/images/ehe.jpg" alt='' width={400} height={400} />
+          {/* <Image src="/assets/images/ehe.jpg" alt='' width={400} height={400} /> */}
         </div>
       </section>
     </div>
