@@ -20,14 +20,14 @@ const SideNavbar = ({ navStyling }: SideNavbarProps) => {
                         <li
                             key={navItem.route}
                             className={`${isActive && 'text-blue-800'}`}>
-                            <Link href={navItem.route} className='flex gap-4 items-center group transiliton-all duration-200 ease-in-out'>
-                                <div className={`${isActive && 'group-hover:bg-blue-800 !bg-blue-800'} p-2 bg-gray-300 rounded-full group-hover:bg-blue-800 transition duration-200 ease-in-out`}>
+                            <button className='flex gap-4 items-center group transiliton-all duration-200 ease-in-out cursor-not-allowed' disabled>
+                                <div className={`${isActive && 'group-hover:bg-blue-800 !bg-blue-800'} p-2 bg-gray-300 rounded-full transition duration-200 ease-in-out`}>
                                     <Image src={navItem.iconUrl} alt='' width={24} height={24} className='' />
                                 </div>
-                                <span className={`${isActive && 'group-hover:text-blue-800 !text-blue-800'} text-gray-300 font-bold text-[16px] leading-[24px] group-hover:text-blue-800 transition duration-200 ease-in-out`}>
+                                <span className={`${isActive && 'group-hover:text-blue-800 !text-blue-800'} text-gray-300 font-bold text-[16px] leading-[24px] transition duration-200 ease-in-out`}>
                                     {navItem.name}
                                 </span>
-                            </Link>
+                            </button>
                         </li>
                     )
                 })}
